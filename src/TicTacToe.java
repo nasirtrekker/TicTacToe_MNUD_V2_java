@@ -9,6 +9,7 @@
  * Description:	This version has three option 1. play with computer 2. play with another human and 3. play with computer vs computer
  * This is the main class which will implement the game and the entry point of the programme
  * Introduce user about the game, take user input (whether play with computer or human ), keep track about winners and show score report
+ *
  */
 
 import java.util.*;
@@ -18,7 +19,7 @@ public class TicTacToe {
         Scanner keyboard = new Scanner(System.in);
 
 
-        //Welcome
+        //Welcome & introduction of the game.
         System.out.println("****************************");
         System.out.println("THREE IN A ROW / TIC-TAC-TOE ");
         System.out.println("****************************");
@@ -105,7 +106,7 @@ public class TicTacToe {
             int turnCounter = 1; //determine (bestämma) that it is the first round
 
             while (myGame.gameActive() && turnCounter < 10 && keepPlaying) {
-                //If the round is evenly divisible (jämnt delbart) by 2, the player 2's turn
+                //If the round is evenly divisible (jämnt delbart) by 2, then player 2's turn
                 if (turnCounter % 2 == 0 && nrOfPlayers == 2)
                     myGame.askPlayer(playerTwo, 'O');
                 else if (nrOfPlayers == 2)
@@ -124,7 +125,7 @@ public class TicTacToe {
                 myGame.drawBoard();
                 myGame.checkForWinner(turnCounter);
                 /*
-                * Keep track of who has won how many times
+                * Keep track of the winner and how many times won
                 * If the game ends in early player O's turn means that X won and vice versa.
                 */
                 if (myGame.gameActive() == false && turnCounter != 10) {

@@ -15,7 +15,7 @@ import java.util.Random;
 
 public class MyRandom {
 
-    //Create a constructor is private
+    //Create a constructor which is private
     // It can not be called anywhere but inside the class
 
     private MyRandom()
