@@ -12,10 +12,10 @@
 import java.util.*;
 
 public class GameBoard {
-    private char[][] gameBoard; //declare the variable gameboard
+    private char[][] gameBoard; //declare the variable gameBoard
     private boolean gameIsGoing;
 
-    public GameBoard() //Constructor for gameboard
+    public GameBoard() //Constructor for gameBoard
     {
         this.gameIsGoing = true;
         this.gameBoard = new char[3][3];
@@ -96,6 +96,8 @@ public class GameBoard {
         } while (notValid(row,column));
 
         makeMove(player,row-1,column-1);
+        // The printf() method provides string formatting function.
+        //  printf() is useful when displaying multiple variables in one line which would be tedious using string concatenation:
         System.out.printf("Player %s put: "+"row "+row+" column "+column, player);
         //row and column -1 to do indexing from 0 , but not from 1
     }   //End of askPlayerAI method

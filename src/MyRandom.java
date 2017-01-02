@@ -3,11 +3,10 @@
  */
 
 /*  Author:	Nasir Uddin
- * MyRandom is an utility class (sv. Helper class) (we create it)
+ * MyRandom is an utility/helper class
  * Serving as a container for all method
  * Have something to do with random numbers
- * We have a private constructor so as not to create any objects.
- * We have no instance variables or instance methods but only have static method ( eg., java.lang.Math is an example of utility class)
+ * We have no instance variables or instance methods but only have static method
  *
  */
 
@@ -17,7 +16,7 @@ import java.util.Random;
 public class MyRandom {
 
     //Create a constructor is private
-    // Ie it can not be called anywhere but inside the class
+    // It can not be called anywhere but inside the class
 
     private MyRandom()
     {
@@ -49,8 +48,7 @@ public class MyRandom {
         // Min = 2
         // rand.nextInt(10-2)+1)-->rand.nextInt(9)
         // This will give 0,1,2,3,4,5,6,7,8
-        // Add min 2 when we will always have a value
-        // Greater than or equal to min
+        // Add min 2 when we will always have a value greater than or equal to min
         return returned;
     }
 

@@ -1,6 +1,7 @@
 /*
  * Author:	Nasir Uddin
  * This class is for player
+ * It takes players name, token/symbol ('X' or 'O') as user input.
  */
 
 import java.util.*;
@@ -22,7 +23,7 @@ public class Player {
 
     public void setName()
     {
-        System.out.println("player "+token+" Please enter your name:");
+        System.out.println("player,  "+token+" Please enter your name:");
         this.name=input.nextLine();
     }
 

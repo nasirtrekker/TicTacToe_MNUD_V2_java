@@ -4,12 +4,14 @@
 
 /*
  * Author:	Nasir Uddin
- * This class if for computer/AI player
+ * Class computer/AI player is extended/child/sub/derived class of GameBoard.
  */
 
 import java.util.*;
 
 public class PlayerAI extends GameBoard{
+
+    //Create  static variable 'name' and kept private to control its value through setter
     private static String name = "Computer";
     private char token;
     Scanner input = new Scanner(System.in);
@@ -38,8 +40,6 @@ public class PlayerAI extends GameBoard{
     {
         this.token=token;
     }
-
-
 
 }
 
