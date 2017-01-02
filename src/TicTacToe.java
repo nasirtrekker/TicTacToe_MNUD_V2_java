@@ -1,8 +1,15 @@
 /**
- * Created by nasirmac on 23/12/2016.
+ * Created by nasir uddin on 23/12/2016.
  */
-
-
+/*
+ * Author:	Nasir Uddin
+ * Project:	Simple TIC-TAC-TOE / Tre i rad game
+ * Year: 2016
+ * Version: 2.0
+ * Description:	This version has three option 1. play with computer 2. play with another human and 3. play with computer vs computer
+ * This is the main class which will implement the game and the entry point of the programme
+ *
+ */
 
 import java.util.*;
 
@@ -19,7 +26,7 @@ public class TicTacToe {
         System.out.println();
         System.out.println(" About:"
                 + "\n ========================"
-                + "\n This is a Tic-Tac-Toe game. It is developed in JAVA using IntelliJ IDEA."
+                + "\n This is a Tic-Tac-Toe (Tre i rad) game which is developed in JAVA using IntelliJ IDEA."
                 + "\n This version of the have has three different option : 0) Computer vs Computer; 1)- Human vs Computer ; 2) Human vs Human."
                 + "\n The developer of this game is Nasir Uddin  \n");
         System.out.println("The 3x3 grid is arranged in the following manner:");
@@ -29,14 +36,14 @@ public class TicTacToe {
         System.out.println("2   |  |    ");
         System.out.println("  -- -- --  ");
         System.out.println("3   |  |    ");
-        System.out.println("To play in a square, please simply enter the corresponding cell position (col or row no. 1, 2, ...etc.)");
+        System.out.println("To play in a square, please simply enter the corresponding cell position (col and row no. 1, 2, ...etc.)");
         System.out.println("Have fun :-)");
         System.out.println("******************");
         System.out.println("*** Nasir Uddin ***");
         System.out.println("******************");
         System.out.println();
         //-------------------------------------------------------
-        boolean keepPlaying = true; //variabel för att kontrollera om spelet är igång
+        boolean keepPlaying = true; //variable to check if the game is running
         int xWinCounter = 0;
         int oWinCounter = 0;
         int nrOfPlayers;
@@ -44,58 +51,61 @@ public class TicTacToe {
         String playerTwo;
 
         System.out.println("How do you want to play the game?");
-        System.out.println("Press '1': If you are a human and want to play with dump computer.");
+        System.out.println("Press '1': If you are a human and want to play with a random computer.");
         System.out.println("Press '2': If you are a human and want to play with another human.");
         System.out.println("Press '0': If you wish you watch/play game as AI vs AI :-) ");
-        do //input validation. Kollar om input är int och 0-2
+        do //input validation. Check whether  input is int and 0-2
         {
-            while (!keyboard.hasNextInt()) //kontrollera att input är ett heltal
+            while (!keyboard.hasNextInt()) //check that the input is an integer
             {
-                System.out.println("That's not a number, pleaser enter 0-2");
+                System.out.println("That's not a number, please enter 0-2");
                 keyboard.next();
             }
             nrOfPlayers = keyboard.nextInt();
-            if (nrOfPlayers < 0 || nrOfPlayers > 2) //kontrollera att input är 0-2
+            if (nrOfPlayers < 0 || nrOfPlayers > 2) //check whether input is 0-2
                 System.out.println("Invalid number, please enter 0-2");
         } while (nrOfPlayers < 0 || nrOfPlayers > 2);
 
+        //human vs human player
         if (nrOfPlayers == 2) {
-            //skapa spelare ett (X)
-            Player playerX = new Player('X');
-            playerX.setName(); //frågar efter input för namn
-            playerOne = playerX.getName();
-
-            //Skapa spelare två (O)
-            Player playerO = new Player('O');
-            playerO.setName();
-            playerTwo = playerO.getName();
-        } else if (nrOfPlayers == 1) {
-            //skapa spelare ett (X)
+            //create player one (X)
             Player playerX = new Player('X');
             playerX.setName();
             playerOne = playerX.getName();
 
-            //Skapa AI spelare (O)
+            //Create player two(O)
+            Player playerO = new Player('O');
+            playerO.setName();
+            playerTwo = playerO.getName();
+
+
+        } else if (nrOfPlayers == 1) // if human vs computer player
+        {
+            Player playerX = new Player('X');  //create player one  (X)
+            playerX.setName();
+            playerOne = playerX.getName();
+
+            //create computer/AI player (O)
             PlayerAI playerO = new PlayerAI('O');
-            playerTwo = playerO.getName(); //använder statiskt AI namn, Computer
+            playerTwo = playerO.getName(); //Use static AI name, Computer
         } else {
-            //skapa AI spelare (X)
+            //create computer/AI player one (X)
             PlayerAI playerX = new PlayerAI('X');
             playerOne = playerX.getName();
 
-            //Skapa AI spelare (O)
+            //crate computer/AI player two  (O)
             PlayerAI playerO = new PlayerAI('O');
             playerTwo = playerO.getName();
         }
 
 
         while (keepPlaying) {
-            GameBoard myGame = new GameBoard(); //skapa objekt GameBoard
-            myGame.drawBoard(); //kör metoden drawBoard
-            int turnCounter = 1; //bestämt att det är första rundan
+            GameBoard myGame = new GameBoard(); //Create object GameBoard
+            myGame.drawBoard(); //run the drawBoard method
+            int turnCounter = 1; //determine (bestämma) that it is the first round
 
             while (myGame.gameActive() && turnCounter < 10 && keepPlaying) {
-                //om rundan är jämnt delbart med 2 är det spelare 2's tur
+                //If the round is evenly divisible (jämnt delbart) by 2, the player 2's turn
                 if (turnCounter % 2 == 0 && nrOfPlayers == 2)
                     myGame.askPlayer(playerTwo, 'O');
                 else if (nrOfPlayers == 2)
@@ -114,9 +124,8 @@ public class TicTacToe {
                 myGame.drawBoard();
                 myGame.checkForWinner(turnCounter);
                 /*
-                håller reda på vem som vunnit hur många gånger
-                Om spelet är slut i början av spelare O's tur innebär det att X
-                vunnit och vice versa.
+                * Keep track of who has won how many times
+                * If the game ends in early player O's turn means that X won and vice versa.
                 */
                 if (myGame.gameActive() == false && turnCounter != 10) {
                     if (turnCounter % 2 == 0) {
@@ -136,17 +145,24 @@ public class TicTacToe {
             char response = keyboard.next().charAt(0);
             if (keepPlaying = (response == 'y'));  // continue until 'y'
 
-           /* System.out.println("Want to play again? Yes or no");
-            String choice = keyboard.nextLine(); //skapa variabel för valet
-            if (choice.equalsIgnoreCase("no")) //se om input är no, se allt som små bokstäver
+           /*
+            ********* alternative code for play again, but have bugs ************
+            System.out.println("Want to play again? Yes or no");
+            String choice = keyboard.nextLine(); //create variable for choice
+            if (choice.equalsIgnoreCase("no")) //see if the input is no, make everything lowercase
             {
-                keepPlaying = false; //om spelare väljer no, sätt spelet som inaktivt
+                keepPlaying = false; //if the player selects no, make game as inactive
             }
         }
+        **************
         */
            else
 
-            {System.out.println("Thanks for playing!");
+            {
+                System.out.println("****** Thanks for playing !******");
+                System.out.println("****** Remember ! Our life is not a simulation but real game in which you are playing with others !! ******");
+                System.out.println("****** See you again !! Live Long and Prosper!!! ******");
+                System.out.println("******** by  Nasir Uddin ********");
             }
 
         }

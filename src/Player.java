@@ -1,4 +1,7 @@
-
+/*
+ * Author:	Nasir Uddin
+ * This class is for player
+ */
 
 import java.util.*;
 

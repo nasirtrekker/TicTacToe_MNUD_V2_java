@@ -2,6 +2,10 @@
  * Created by nasirmac on 23/12/2016.
  */
 
+/*
+ * Author:	Nasir Uddin
+ * This class if for computer/AI player
+ */
 
 import java.util.*;
 

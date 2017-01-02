@@ -1,6 +1,8 @@
 
-# Tic Tac Toe
 
+****************************
+THREE IN A ROW / TIC-TAC-TOE 
+****************************
 
  It is developed in JAVA using IntelliJ IDEA.
  
