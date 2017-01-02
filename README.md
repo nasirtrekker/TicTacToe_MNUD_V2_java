@@ -11,9 +11,3 @@ THREE IN A ROW / TIC-TAC-TOE
 =======
 - User has three different options : 0) Computer vs Computer; 1)- Human vs Computer ; 2) Human vs Human
 - Players can select their names and get score reports after each game.
->>>>>>> c2cfa646d175c8fffb25956039a50a062f7c4e95
-
-
- 
-
-
